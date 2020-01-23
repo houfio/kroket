@@ -1,0 +1,21 @@
+{
+  "name": "@kroket/hash",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "module": "lib/index.es.js",
+  "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/houfio/kroket.git"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/houfio/kroket#readme",
+  "files": [
+    "src/",
+    "lib/"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

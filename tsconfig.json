@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es5",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "jsx": "react",
+    "moduleResolution": "node",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "strict": true
+  },
+  "exclude": [
+    "node_modules/",
+    "**/*.test.tsx"
+  ]
+}

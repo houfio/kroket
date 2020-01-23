@@ -1,0 +1,46 @@
+{
+  "name": "kroket",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "prebuild": "lerna exec -- rimraf lib",
+    "build": "lerna exec --parallel -- rollup --config \\$LERNA_ROOT_PATH/rollup.config.ts",
+    "start": "start-storybook -p 8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/houfio/kroket.git"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/houfio/kroket#readme",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^7.0.0",
+    "@rollup/plugin-typescript": "^2.1.0",
+    "@types/jest": "^24.9.1",
+    "@types/react": "^16.9.19",
+    "@types/react-test-renderer": "^16.9.2",
+    "jest": "^25.1.0",
+    "lerna": "^3.20.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-test-renderer": "^16.12.0",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.29.1",
+    "ts-jest": "^25.0.0",
+    "tslint": "^6.0.0",
+    "tslint-react": "^4.2.0",
+    "typescript": "^3.7.5"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "\\.test\\.tsx?$",
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "ts",
+      "tsx"
+    ]
+  }
+}
