@@ -1,6 +1,7 @@
 import { useStyled } from '@kroket/styled';
 import * as React from 'react';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
+import 'wicg-inert';
 
 type Props = {
   /**
@@ -10,15 +11,23 @@ type Props = {
   /**
    * Toggle the spinner state
    */
-  spinning: boolean
+  spinning: boolean,
+  /**
+   * The color of the spinner
+   */
+  mode?: 'light' | 'dark',
+  /**
+   * Size of the spinner
+   */
+  size?: 'small' | 'normal' | 'big'
 }
 
-export function Spinner({ children, spinning }: Props) {
+export function Spinner({ children, spinning, mode = 'light', size = 'normal' }: Props) {
+  const ref = useRef<HTMLElement>(null);
   const StyledWrapper = useStyled('div')`
     position: relative;
     display: inline-block;
   `;
-
   const StyledSpinner = useStyled('div')`
     position: absolute;
     display: flex;
@@ -41,8 +50,8 @@ export function Spinner({ children, spinning }: Props) {
       content: "";
       width: .75rem;
       height: .75rem;
-      border: .25rem solid rgba(0, 0, 0, .25);
-      border-left-color: black;
+      border: .25rem solid rgba(255, 255, 255, .5);
+      border-left-color: white;
       border-radius: 50%;
       animation: rotate .5s linear infinite;
       @keyframes rotate {
@@ -54,12 +63,36 @@ export function Spinner({ children, spinning }: Props) {
         }
       }
     }
+    [mode="dark"]::after {
+      border: .25rem solid rgba(0, 0, 0, .25);
+      border-left-color: black;
+    }
+    [size="small"]::after {
+      width: .5rem;
+      height: .5rem;
+    }
+    [size="big"]::after {
+      width: 1rem;
+      height: 1rem;
+    }
   `;
 
+  useEffect(() => {
+    if (!ref.current) {
+      return;
+    }
+
+    if (spinning) {
+      ref.current.setAttribute('inert', '');
+    } else {
+      ref.current.removeAttribute('inert');
+    }
+  }, [spinning]);
+
   return (
-    <StyledWrapper>
+    <StyledWrapper ref={ref}>
       {children}
-      <StyledSpinner data-spinning={spinning}/>
+      <StyledSpinner data-mode={mode} data-spinning={spinning} data-size={size}/>
     </StyledWrapper>
   );
 }

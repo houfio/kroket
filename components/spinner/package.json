@@ -19,7 +19,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@kroket/styled": "^1.0.0"
+    "@kroket/styled": "^1.0.0",
+    "wicg-inert": "^3.0.0"
   },
   "peerDependencies": {
     "react": "^16.10.0"
