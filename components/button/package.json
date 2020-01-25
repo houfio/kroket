@@ -19,9 +19,12 @@
     "access": "public"
   },
   "dependencies": {
+    "@kroket/spinner": "^1.0.0",
     "@kroket/styled": "^1.0.0"
   },
   "peerDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.0",
+    "@fortawesome/react-fontawesome": "^0.1.0",
     "react": "^16.10.0"
   }
 }
