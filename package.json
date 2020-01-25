@@ -3,6 +3,8 @@
   "private": true,
   "scripts": {
     "start": "start-storybook -p 8000",
+    "bootstrap": "lerna bootstrap",
+    "lint": "tslint --project tsconfig.json",
     "test": "jest",
     "prebuild": "lerna exec -- rimraf lib",
     "build": "lerna exec --parallel -- rollup --config \\$LERNA_ROOT_PATH/rollup.config.ts"
