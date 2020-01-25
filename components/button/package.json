@@ -12,7 +12,7 @@
   "license": "MIT",
   "homepage": "https://github.com/houfio/kroket#readme",
   "files": [
-    "src/",
+    "index.tsx",
     "lib/"
   ],
   "publishConfig": {

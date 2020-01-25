@@ -1,7 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve';
-import typescript from '@rollup/plugin-typescript';
 import { existsSync } from 'fs';
 import { dirname, join } from 'path';
+import typescript from 'rollup-plugin-typescript2';
 
 const root = process.cwd();
 const { main, module, types, dependencies = {}, peerDependencies = {} } = require(join(root, 'package.json'));
@@ -28,10 +28,19 @@ export default {
     ...Object.keys(peerDependencies)
   ],
   plugins: [
+    resolve(),
     typescript({
-      rootDir: dir,
-      declarationDir: join(root, dirname(types))
-    }),
-    resolve()
+      clean: true,
+      useTsconfigDeclarationDir: true,
+      tsconfigOverride: {
+        compilerOptions: {
+          rootDir: dir,
+          declarationDir: join(root, dirname(types))
+        },
+        include: [
+          dir
+        ]
+      }
+    })
   ]
 };
