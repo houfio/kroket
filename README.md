@@ -1,3 +1,3 @@
-![Logo](./logo.svg)
+![Logo](./logo.svg) kroket
 ---
-kroket - react component library
+the tastiest component library
