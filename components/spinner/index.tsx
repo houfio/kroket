@@ -1,6 +1,6 @@
 import { useStyled } from '@kroket/styled';
 import * as React from 'react';
-import { ReactNode, useEffect, useRef } from 'react';
+import { ReactNode } from 'react';
 import 'wicg-inert';
 
 type Props = {
@@ -23,7 +23,6 @@ type Props = {
 }
 
 export function Spinner({ children, spinning, mode = 'light', size = 'normal' }: Props) {
-  const ref = useRef<HTMLElement>(null);
   const StyledWrapper = useStyled('div')`
     position: relative;
     display: inline-block;
@@ -77,20 +76,8 @@ export function Spinner({ children, spinning, mode = 'light', size = 'normal' }:
     }
   `;
 
-  useEffect(() => {
-    if (!ref.current) {
-      return;
-    }
-
-    if (spinning) {
-      ref.current.setAttribute('inert', '');
-    } else {
-      ref.current.removeAttribute('inert');
-    }
-  }, [spinning]);
-
   return (
-    <StyledWrapper ref={ref}>
+    <StyledWrapper inert={spinning ? '' : undefined}>
       {children}
       <StyledSpinner data-mode={mode} data-spinning={spinning} data-size={size}/>
     </StyledWrapper>
