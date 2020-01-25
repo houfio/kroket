@@ -1,10 +1,8 @@
 import { Breakpoint, BREAKPOINTS } from '@kroket/breakpoint';
 import { css } from '@kroket/css';
-import { ClassAttributes, createElement, forwardRef, useMemo } from 'react';
+import { ComponentPropsWithoutRef, createElement, ElementType, forwardRef, useMemo } from 'react';
 
-type ElementProps<T extends keyof JSX.IntrinsicElements> = JSX.IntrinsicElements[T] extends ClassAttributes<infer A> ? A : never;
-
-export function useStyled<T extends keyof JSX.IntrinsicElements>(element: T) {
+export function useStyled<T extends ElementType>(element: T) {
   return (literals: TemplateStringsArray, ...breakpoints: Breakpoint[]) => {
     let style = '';
 
@@ -15,7 +13,7 @@ export function useStyled<T extends keyof JSX.IntrinsicElements>(element: T) {
 
     style += literals[literals.length - 1];
 
-    return useMemo(() => forwardRef<ElementProps<T>, JSX.IntrinsicElements[T]>((props, ref) => createElement(element, {
+    return useMemo(() => forwardRef<unknown, ComponentPropsWithoutRef<T>>((props, ref) => createElement(element, {
       ...props,
       className: css(style),
       ref
