@@ -21,6 +21,7 @@
   "dependencies": {
     "@kroket/hash": "^1.0.0",
     "@kroket/inject": "^1.0.0",
+    "@kroket/memoize": "^1.0.0",
     "stylis": "^3.5.4"
   }
 }
