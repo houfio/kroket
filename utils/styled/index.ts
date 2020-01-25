@@ -6,7 +6,14 @@ type ElementProps<T extends keyof JSX.IntrinsicElements> = JSX.IntrinsicElements
 export function useStyled<T extends keyof JSX.IntrinsicElements>(element: T) {
   return (literals: TemplateStringsArray, ...extra: unknown[]) => {
     return useMemo(() => {
-      const style = extra.reduce<string>((previous, current, index) => previous + literals[index] + current, '');
+      let style = '';
+
+      for (let i = 0; i < extra.length; i++) {
+        style += literals[i];
+        style += extra[i];
+      }
+
+      style += literals[literals.length - 1];
 
       return forwardRef<ElementProps<T>, JSX.IntrinsicElements[T]>((props, ref) => createElement(element, {
         ...props,

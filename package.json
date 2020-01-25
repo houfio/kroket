@@ -2,10 +2,10 @@
   "name": "kroket",
   "private": true,
   "scripts": {
+    "start": "start-storybook -p 8000",
     "test": "jest",
     "prebuild": "lerna exec -- rimraf lib",
-    "build": "lerna exec --parallel -- rollup --config \\$LERNA_ROOT_PATH/rollup.config.ts",
-    "start": "start-storybook -p 8000"
+    "build": "lerna exec --parallel -- rollup --config \\$LERNA_ROOT_PATH/rollup.config.ts"
   },
   "repository": {
     "type": "git",
@@ -14,19 +14,29 @@
   "license": "MIT",
   "homepage": "https://github.com/houfio/kroket#readme",
   "devDependencies": {
+    "@babel/core": "^7.8.3",
     "@rollup/plugin-node-resolve": "^7.0.0",
     "@rollup/plugin-typescript": "^2.1.0",
+    "@storybook/addon-a11y": "^6.0.0-alpha.1",
+    "@storybook/addon-actions": "^6.0.0-alpha.1",
+    "@storybook/addon-info": "^6.0.0-alpha.1",
+    "@storybook/addon-knobs": "^6.0.0-alpha.1",
+    "@storybook/addons": "^6.0.0-alpha.1",
+    "@storybook/react": "^6.0.0-alpha.1",
     "@types/jest": "^24.9.1",
     "@types/react": "^16.9.19",
     "@types/react-test-renderer": "^16.9.2",
+    "babel-loader": "^8.0.6",
     "jest": "^25.1.0",
     "lerna": "^3.20.2",
     "react": "^16.12.0",
+    "react-docgen-typescript-loader": "^3.6.0",
     "react-dom": "^16.12.0",
     "react-test-renderer": "^16.12.0",
     "rimraf": "^3.0.0",
     "rollup": "^1.29.1",
     "ts-jest": "^25.0.0",
+    "ts-loader": "^6.2.1",
     "tslint": "^6.0.0",
     "tslint-react": "^4.2.0",
     "typescript": "^3.7.5"
@@ -35,12 +45,13 @@
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
-    "testRegex": "\\.test\\.tsx?$",
+    "testRegex": "\\.tests\\.tsx?$",
     "moduleFileExtensions": [
       "js",
       "jsx",
       "ts",
-      "tsx"
+      "tsx",
+      "json"
     ]
   }
 }
