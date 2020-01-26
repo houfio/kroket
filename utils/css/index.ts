@@ -3,6 +3,7 @@ import { inject } from '@kroket/inject';
 import { memoize } from '@kroket/memoize';
 
 const stylis = require('stylis');
+const add = inject(process.env.NODE_END !== 'production');
 
 export const css = memoize((style: string) => {
   const selector = `kroket-${hash(style)}`;
@@ -36,7 +37,7 @@ export const css = memoize((style: string) => {
     }
   }
 
-  inject(styles);
+  add(styles);
 
   return selector;
 });

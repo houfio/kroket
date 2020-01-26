@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should add a style tag to the head 1`] = `
+<head>
+  <style
+    data-kroket=""
+  />
+</head>
+`;
+
+exports[`should add a text node to the style tag 1`] = `
+<head>
+  <style
+    data-kroket=""
+  >
+    body { background-color: dodgerblue; }
+  </style>
+</head>
+`;
+
+exports[`should insert a rule to the style tag 1`] = `
+<head>
+  <style
+    data-kroket=""
+  />
+</head>
+`;
