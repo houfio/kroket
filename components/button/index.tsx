@@ -3,13 +3,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Spinner } from '@kroket/spinner';
 import { useStyled } from '@kroket/styled';
 import * as React from 'react';
-import { ComponentPropsWithoutRef, forwardRef } from 'react';
+import { forwardRef } from 'react';
 
-type Props = Omit<ComponentPropsWithoutRef<'button'>, 'children' | 'aria-label'> & {
+type Props = {
   /**
    * Defines a human-readable title describing the action of the button. Also sets the aria-label property.
    */
   text: string,
+  /**
+   * Defines the button click behaviour.
+   */
+  onClick?: () => void,
   /**
    * Defines an icon displayed next to the button text.
    */
@@ -19,26 +23,34 @@ type Props = Omit<ComponentPropsWithoutRef<'button'>, 'children' | 'aria-label'>
    */
   iconOnly?: boolean,
   /**
-   * Indicates if the button is currently executing an action.
+   * Indicates if the button is currently executing an action. Also sets the button state to disabled.
    */
   loading?: boolean,
   /**
+   * Indicate if the button is disabled.
+   */
+  disabled?: boolean,
+  /**
    * Defines the size of text and spacing inside the button.
    */
-  size?: 'small' | 'normal' | 'big'
+  size?: 'small' | 'normal' | 'big',
+  /**
+   * Defines the button behaviour inside forms.
+   */
+  type?: 'button' | 'submit'
 };
 
-export const Button = forwardRef<HTMLButtonElement, Props>(({ text, icon, iconOnly = false, loading = false, size = 'normal', ...props }, ref) => {
+export const Button = forwardRef<HTMLButtonElement, Props>(({ text, onClick, icon, iconOnly = false, loading = false, disabled = false, size = 'normal', type = 'button' }, ref) => {
   const StyledButton = useStyled('button')`
     padding: .5rem .75rem;
-    color: white;
+    color: ${'text'};
     background-color: ${'primary'};
     font-size: 1rem;
     border: none;
     border-radius: .5rem;
     user-select: none;
     cursor: pointer;
-    transition: color .25s ease, transform .25s ease, opacity .25s ease, box-shadow .25s ease;
+    transition: color .25s ease, transform .25s ease, opacity .25s ease, padding .25s ease, font-size .25s ease, box-shadow .25s ease;
     [loading="true"] {
       color: transparent;
     }
@@ -77,7 +89,9 @@ export const Button = forwardRef<HTMLButtonElement, Props>(({ text, icon, iconOn
   return (
     <Spinner spinning={loading} size={size}>
       <StyledButton
-        {...props}
+        onClick={onClick}
+        disabled={disabled}
+        type={type}
         data-loading={loading}
         data-size={size}
         aria-label={text}

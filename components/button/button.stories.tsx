@@ -1,6 +1,6 @@
 import { faStroopwafel } from '@fortawesome/free-solid-svg-icons';
 import { action } from '@storybook/addon-actions';
-import { text } from '@storybook/addon-knobs';
+import { select, text as string } from '@storybook/addon-knobs';
 import * as React from 'react';
 
 import { Button } from '.';
@@ -9,52 +9,50 @@ export default {
   title: 'Button'
 };
 
-export const label = () => (
-  <>
-    <Button text={text('Label', 'button')} onClick={action('click')} size="small"/>
-    <br/>
-    <Button text={text('Label', 'button')} onClick={action('click')}/>
-    <br/>
-    <Button text={text('Label', 'button')} onClick={action('click')} size="big"/>
-  </>
-);
+function knobs() {
+  const label = string('Label', 'button');
+  const click = action('click');
+  const size = select('Size', ['small', 'normal', 'big'], 'normal');
 
-export const loading = () => (
-  <>
-    <Button text="button" loading={true} size="small"/>
-    <br/>
-    <Button text="button" loading={true}/>
-    <br/>
-    <Button text="button" loading={true} size="big"/>
-  </>
-);
+  return { label, click, size };
+}
 
-export const icon = () => (
-  <>
-    <Button text={text('Label', 'button')} onClick={action('click')} icon={faStroopwafel} size="small"/>
-    <br/>
-    <Button text={text('Label', 'button')} onClick={action('click')} icon={faStroopwafel}/>
-    <br/>
-    <Button text={text('Label', 'button')} onClick={action('click')} icon={faStroopwafel} size="big"/>
-  </>
-);
+export function text() {
+  const { label, click, size } = knobs();
 
-export const onlyIcon = () => (
-  <>
-    <Button text="button" onClick={action('click')} icon={faStroopwafel} iconOnly={true} size="small"/>
-    <br/>
-    <Button text="button" onClick={action('click')} icon={faStroopwafel} iconOnly={true}/>
-    <br/>
-    <Button text="button" onClick={action('click')} icon={faStroopwafel} iconOnly={true} size="big"/>
-  </>
-);
+  return (
+    <Button text={label} onClick={click} size={size}/>
+  );
+}
 
-export const disabled = () => (
-  <>
-    <Button text={text('Label', 'button')} disabled={true} size="small"/>
-    <br/>
-    <Button text={text('Label', 'button')} disabled={true}/>
-    <br/>
-    <Button text={text('Label', 'button')} disabled={true} size="big"/>
-  </>
-);
+export function loading() {
+  const { label, click, size } = knobs();
+
+  return (
+    <Button text={label} onClick={click} size={size} loading={true}/>
+  );
+}
+
+export function icon() {
+  const { label, click, size } = knobs();
+
+  return (
+    <Button text={label} onClick={click} size={size} icon={faStroopwafel}/>
+  );
+}
+
+export function onlyIcon() {
+  const { label, click, size } = knobs();
+
+  return (
+    <Button text={label} onClick={click} size={size} icon={faStroopwafel} iconOnly={true}/>
+  );
+}
+
+export function disabled() {
+  const { label, click, size } = knobs();
+
+  return (
+    <Button text={label} onClick={click} size={size} disabled={true}/>
+  );
+}

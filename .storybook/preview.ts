@@ -8,7 +8,8 @@ import { Theme, ThemeProvider } from '../utils/theme';
 const { withContexts } = require('@storybook/addon-contexts/react');
 const redTheme: Theme = {
   primary: 'rgb(255, 99, 71)',
-  focus: 'rgba(255, 99, 71, .5)'
+  focus: 'rgba(255, 99, 71, .5)',
+  text: 'white'
 };
 
 addDecorator(withA11y);
