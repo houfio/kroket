@@ -8,7 +8,7 @@
     "test": "jest",
     "prebuild": "lerna exec -- rimraf lib",
     "build": "lerna exec --parallel -- rollup --config \\$LERNA_ROOT_PATH/rollup.config.ts",
-    "build-storybook": "build-storybook --output-dir .out"
+    "build:storybook": "build-storybook --output-dir .out"
   },
   "repository": {
     "type": "git",
