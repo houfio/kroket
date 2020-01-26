@@ -1,9 +1,7 @@
 import { memoize } from '.';
 
-type ParseFn = (value: string) => number;
-
-let parse: ParseFn;
-let memoizedParse: ParseFn;
+let parse: (value: string) => number;;
+let memoizedParse: (value: string, remember?: boolean) => number;;
 
 beforeEach(() => {
   parse = jest.fn().mockImplementation((value: string) => parseInt(value, 10));
@@ -24,6 +22,13 @@ it('should not execute the memoized function if the arguments have not changed',
   memoizedParse('1');
 
   expect(parse).toHaveBeenCalledTimes(1);
+});
+
+it('should not memoize when remember is false', () => {
+  memoizedParse('1', false);
+  memoizedParse('1', false);
+
+  expect(parse).toHaveBeenCalledTimes(2);
 });
 
 it('should invalidate a memoize cache if new arguments are provided', () => {

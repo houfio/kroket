@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should parse data attributes 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        ".kroket-pj0ioc[data-hidden=\\"true\\"]{opacity:0;}",
+      ],
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`should parse nested data attributes 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        ".kroket-17msocp[data-hidden=\\"true\\"][data-enabled=\\"false\\"]{opacity:0;}",
+      ],
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`should remember the depth of attributes 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        ".kroket-e7pk4h{-webkit-animation:test-kroket-e7pk4h;animation:test-kroket-e7pk4h;}",
+        "@-webkit-keyframes test-kroket-e7pk4h{from{opacity:1;}to{opacity:0;}}",
+        "@keyframes test-kroket-e7pk4h{from{opacity:1;}to{opacity:0;}}",
+      ],
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;

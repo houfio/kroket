@@ -25,12 +25,10 @@ export const css = memoize((style: string) => {
       depth--;
 
       if (!depth) {
-        if (current) {
-          styles = [
-            ...styles,
-            current
-          ];
-        }
+        styles = [
+          ...styles,
+          current
+        ];
 
         current = '';
       }
