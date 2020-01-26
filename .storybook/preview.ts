@@ -3,7 +3,33 @@ import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
 import { addDecorator, addParameters } from '@storybook/react';
 
+import { Theme, ThemeProvider } from '../utils/theme';
+
+const { withContexts } = require('@storybook/addon-contexts/react');
+const redTheme: Theme = {
+  primary: 'rgb(255, 99, 71)',
+  focus: 'rgba(255, 99, 71, .5)'
+};
+
 addDecorator(withA11y);
+addDecorator(withContexts([{
+  icon: 'star',
+  title: 'Theme',
+  components: [
+    ThemeProvider
+  ],
+  params: [
+    {
+      name: 'Red',
+      props: {
+        value: redTheme
+      }
+    }
+  ],
+  options: {
+    cancelable: true
+  }
+}]));
 addDecorator(withInfo);
 addDecorator(withKnobs);
 addParameters({

@@ -24,6 +24,7 @@
     "@rollup/plugin-node-resolve": "^7.0.0",
     "@storybook/addon-a11y": "^6.0.0-alpha.1",
     "@storybook/addon-actions": "^6.0.0-alpha.1",
+    "@storybook/addon-contexts": "^6.0.0-alpha.1",
     "@storybook/addon-info": "^6.0.0-alpha.1",
     "@storybook/addon-knobs": "^6.0.0-alpha.1",
     "@storybook/addons": "^6.0.0-alpha.1",
