@@ -21,3 +21,22 @@ jobs:
         npm run build
       env:
         CI: true
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - name: npm install and build:storybook
+      run: |
+        npm ci
+        npm run bootstrap
+        npm run build:storybook
+      env:
+        CI: true
+    - uses: w9jds/firebase-action@v1
+      with:
+        args: deploy --only hosting
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
