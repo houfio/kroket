@@ -3,39 +3,32 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Spinner } from '@kroket/spinner';
 import { useStyled } from '@kroket/styled';
 import * as React from 'react';
+import { ComponentPropsWithoutRef, forwardRef } from 'react';
 
-type Props = {
+type Props = Omit<ComponentPropsWithoutRef<'button'>, 'children' | 'aria-label'> & {
   /**
-   * Content of the button
+   * Defines a human-readable title describing the action of the button. Also sets the aria-label property.
    */
   text: string,
   /**
-   * Event called on every button click
-   */
-  onClick?: () => void,
-  /**
-   * Icon displayed in the button
+   * Defines an icon displayed next to the button text.
    */
   icon?: IconProp,
   /**
-   * Only display icon
+   * Indicates if only the icon should be visible in the button. The text will still be used by assistive technologies.
    */
   iconOnly?: boolean,
   /**
-   * Toggle button loading state, automatically disables the button
+   * Indicates if the button is currently executing an action.
    */
   loading?: boolean,
   /**
-   * Toggle disabled state
-   */
-  disabled?: boolean,
-  /**
-   * Size of spacing and text inside the button
+   * Defines the size of text and spacing inside the button.
    */
   size?: 'small' | 'normal' | 'big'
 };
 
-export function Button({ text, onClick, icon, iconOnly = false, loading = false, disabled = false, size = 'normal' }: Props) {
+export const Button = forwardRef<HTMLButtonElement, Props>(({ text, icon, iconOnly = false, loading = false, size = 'normal', ...props }, ref) => {
   const StyledButton = useStyled('button')`
     padding: .5rem .75rem;
     color: white;
@@ -83,7 +76,13 @@ export function Button({ text, onClick, icon, iconOnly = false, loading = false,
 
   return (
     <Spinner spinning={loading} size={size}>
-      <StyledButton onClick={onClick} disabled={disabled} data-loading={loading} data-size={size} aria-label={text}>
+      <StyledButton
+        {...props}
+        data-loading={loading}
+        data-size={size}
+        aria-label={text}
+        ref={ref}
+      >
         {icon && (
           <StyledIcon icon={icon} data-only={iconOnly} data-size={size}/>
         )}
@@ -91,4 +90,4 @@ export function Button({ text, onClick, icon, iconOnly = false, loading = false,
       </StyledButton>
     </Spinner>
   );
-}
+});

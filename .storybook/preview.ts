@@ -42,5 +42,11 @@ addParameters({
         }
       ]
     }
+  },
+  info: {
+    header: false,
+    propTablesExclude: [
+      ThemeProvider
+    ]
   }
 });
