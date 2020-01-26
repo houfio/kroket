@@ -1,14 +1,16 @@
-import { Breakpoint, BREAKPOINTS } from '@kroket/breakpoint';
 import { css } from '@kroket/css';
+import { Theme, useTheme } from '@kroket/theme';
 import { ComponentPropsWithoutRef, createElement, ElementType, forwardRef, useMemo } from 'react';
 
 export function useStyled<T extends ElementType>(element: T) {
-  return (literals: TemplateStringsArray, ...breakpoints: Breakpoint[]) => {
+  return (literals: TemplateStringsArray, ...colors: (keyof Theme)[]) => {
+    const theme = useTheme();
+
     let style = '';
 
-    for (let i = 0; i < breakpoints.length; i++) {
+    for (let i = 0; i < colors.length; i++) {
       style += literals[i];
-      style += `@media (min-width: ${BREAKPOINTS[breakpoints[i]]}rem)`;
+      style += theme[colors[i]];
     }
 
     style += literals[literals.length - 1];

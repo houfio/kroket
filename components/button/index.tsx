@@ -39,7 +39,7 @@ export function Button({ text, onClick, icon, iconOnly = false, loading = false,
   const StyledButton = useStyled('button')`
     padding: .5rem .75rem;
     color: white;
-    background-color: rgba(30, 144, 255, 1);
+    background-color: ${'primary'};
     font-size: 1rem;
     border: none;
     border-radius: .5rem;
@@ -66,7 +66,7 @@ export function Button({ text, onClick, icon, iconOnly = false, loading = false,
     }
     :focus {
       outline: none;
-      box-shadow: 0 0 0 .25rem rgba(30, 144, 255, .5);
+      box-shadow: 0 0 0 .25rem ${'focus'};
     }
   `;
   const StyledIcon = useStyled(FontAwesomeIcon)`

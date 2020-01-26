@@ -19,8 +19,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@kroket/breakpoint": "^1.0.0",
-    "@kroket/css": "^1.0.0"
+    "@kroket/css": "^1.0.0",
+    "@kroket/theme": "^1.0.0"
   },
   "peerDependencies": {
     "react": "^16.12.0"
