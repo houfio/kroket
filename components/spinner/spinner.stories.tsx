@@ -13,8 +13,17 @@ export function spinner() {
   const size = select('Size', ['small', 'normal', 'big'], 'normal');
 
   return (
-    <Spinner spinning={spinning} mode={mode} size={size}>
-      <div style={{ width: '10rem', height: '10rem', backgroundColor: 'dodgerblue' }}/>
-    </Spinner>
+    <div>
+      <Spinner spinning={spinning} mode={mode} size={size}>
+        <div style={{ width: '10rem', height: '10rem', backgroundColor: 'dodgerblue' }}>
+          <button>
+            button
+          </button>
+        </div>
+      </Spinner>
+      <button>
+        button
+      </button>
+    </div>
   );
 }

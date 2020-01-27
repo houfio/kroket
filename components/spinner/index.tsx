@@ -1,7 +1,7 @@
+import { Focus } from '@kroket/focus';
 import { useStyled } from '@kroket/styled';
 import * as React from 'react';
 import { ReactNode } from 'react';
-import 'wicg-inert';
 
 type Props = {
   /**
@@ -23,7 +23,7 @@ type Props = {
 }
 
 export function Spinner({ children, spinning, mode = 'light', size = 'normal' }: Props) {
-  const StyledWrapper = useStyled('div')`
+  const StyledWrapper = useStyled(Focus)`
     position: relative;
     display: inline-block;
   `;
@@ -78,7 +78,7 @@ export function Spinner({ children, spinning, mode = 'light', size = 'normal' }:
   `;
 
   return (
-    <StyledWrapper inert={spinning ? '' : undefined}>
+    <StyledWrapper state={spinning ? 'exclude' : undefined}>
       {children}
       <StyledSpinner data-mode={mode} data-spinning={spinning} data-size={size}/>
     </StyledWrapper>

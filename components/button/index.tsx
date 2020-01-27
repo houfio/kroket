@@ -37,10 +37,11 @@ type Props = {
   /**
    * Defines the button behaviour inside forms.
    */
-  type?: 'button' | 'submit'
+  type?: 'button' | 'submit',
+  className?: string
 };
 
-export const Button = forwardRef<HTMLButtonElement, Props>(({ text, onClick, icon, iconOnly = false, loading = false, disabled = false, size = 'normal', type = 'button' }, ref) => {
+export const Button = forwardRef<HTMLButtonElement, Props>(({ text, onClick, icon, iconOnly = false, loading = false, disabled = false, size = 'normal', type = 'button', className }, ref) => {
   const StyledButton = useStyled('button')`
     padding: .5rem .75rem;
     color: ${'text'};
@@ -92,6 +93,7 @@ export const Button = forwardRef<HTMLButtonElement, Props>(({ text, onClick, ico
         onClick={onClick}
         disabled={disabled}
         type={type}
+        className={className}
         data-loading={loading}
         data-size={size}
         aria-label={text}

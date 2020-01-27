@@ -1,5 +1,5 @@
 {
-  "name": "@kroket/spinner",
+  "name": "@kroket/trap",
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
@@ -12,17 +12,10 @@
   "license": "MIT",
   "homepage": "https://github.com/houfio/kroket#readme",
   "files": [
-    "index.tsx",
+    "index.ts",
     "lib/"
   ],
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "@kroket/focus": "^1.0.0",
-    "@kroket/styled": "^1.0.0"
-  },
-  "peerDependencies": {
-    "react": "^16.10.0"
   }
 }

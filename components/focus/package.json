@@ -1,5 +1,5 @@
 {
-  "name": "@kroket/spinner",
+  "name": "@kroket/focus",
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
@@ -19,8 +19,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@kroket/focus": "^1.0.0",
-    "@kroket/styled": "^1.0.0"
+    "@kroket/trap": "^1.0.0",
+    "inert-polyfill": "^0.2.5"
   },
   "peerDependencies": {
     "react": "^16.10.0"
