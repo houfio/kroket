@@ -7,7 +7,7 @@ export default {
   title: 'Spinner'
 };
 
-export function spinner() {
+export function simple() {
   const spinning = boolean('Spinning', true);
   const mode = select('Mode', ['dark', 'light'], 'dark');
   const size = select('Size', ['small', 'normal', 'big'], 'normal');

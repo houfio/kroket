@@ -1,7 +1,7 @@
 import { trap } from '@kroket/trap';
 import 'inert-polyfill';
 import * as React from 'react';
-import { ReactNode, useEffect, useRef } from 'react';
+import { ReactNode, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 type Props = {
   /**
@@ -9,18 +9,23 @@ type Props = {
    */
   children?: ReactNode,
   /**
-   * Indicates the state of the focus container. When set to 'include', the container acts as a focus trap for its
+   * Indicates the typo of the focus container. When set to 'include', the container acts as a focus trap for its
    * children. When set to 'exclude', it acts as a focus trap for its parents instead.
    */
-  state?: 'include' | 'exclude',
+  type?: 'include' | 'exclude',
+  /**
+   * Indicates if the last focused element should restore focus when state changes from active to inactive.
+   */
+  restore?: boolean,
   className?: string
 };
 
-export function Focus({ children, state, className }: Props) {
+export function Focus({ children, type, restore = false, className }: Props) {
   const ref = useRef<HTMLDivElement>(null);
+  const [last, setLast] = useState<HTMLElement>();
 
   useEffect(() => {
-    if (!ref.current || state !== 'include') {
+    if (!ref.current || type !== 'include') {
       return;
     }
 
@@ -33,10 +38,20 @@ export function Focus({ children, state, className }: Props) {
     document.addEventListener('keydown', handleKeyDown);
 
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [state]);
+  }, [type]);
+
+  useLayoutEffect(() => {
+    setLast(type && document.activeElement as HTMLElement || undefined);
+  }, [type, setLast]);
+
+  useEffect(() => {
+    if (restore && !type && last) {
+      last.focus();
+    }
+  }, [restore, type, last]);
 
   return (
-    <div ref={ref} className={className} inert={state === 'exclude' ? '' : undefined}>
+    <div ref={ref} className={className} inert={type === 'exclude' ? '' : undefined}>
       {children}
     </div>
   );

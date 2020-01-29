@@ -78,7 +78,7 @@ export function Spinner({ children, spinning, mode = 'light', size = 'normal' }:
   `;
 
   return (
-    <StyledWrapper state={spinning ? 'exclude' : undefined}>
+    <StyledWrapper type={spinning ? 'exclude' : undefined}>
       {children}
       <StyledSpinner data-mode={mode} data-spinning={spinning} data-size={size}/>
     </StyledWrapper>
