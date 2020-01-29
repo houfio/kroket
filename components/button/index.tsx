@@ -90,13 +90,13 @@ export const Button = forwardRef<HTMLButtonElement, Props>(({ text, onClick, ico
   return (
     <Spinner spinning={loading} size={size}>
       <StyledButton
+        title={text}
         onClick={onClick}
         disabled={disabled}
         type={type}
         className={className}
         data-loading={loading}
         data-size={size}
-        aria-label={text}
         ref={ref}
       >
         {icon && (
