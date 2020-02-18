@@ -7,11 +7,11 @@ type Props = {
   /**
    * Defines the children of the spinner.
    */
-  children: ReactNode,
+  children?: ReactNode,
   /**
    * Indicates if the spinner should be displayed on top of its children.
    */
-  spinning: boolean,
+  spinning?: boolean,
   /**
    * Defines the color of the spinner.
    */
@@ -22,7 +22,7 @@ type Props = {
   size?: 'small' | 'normal' | 'big'
 }
 
-export function Spinner({ children, spinning, mode = 'light', size = 'normal' }: Props) {
+export function Spinner({ children, spinning = false, mode = 'light', size = 'normal' }: Props) {
   const StyledWrapper = useStyled(Focus)`
     display: inline-block;
   `;
