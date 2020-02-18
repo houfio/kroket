@@ -2,13 +2,13 @@
   "name": "kroket",
   "private": true,
   "scripts": {
-    "start": "start-storybook -p 8000",
+    "start": "start-storybook --port 8000 --docs",
     "bootstrap": "lerna bootstrap",
     "lint": "tslint --project tsconfig.json",
     "test": "jest",
     "prebuild": "lerna exec -- rimraf lib",
     "build": "lerna exec --parallel -- rollup --config \\$LERNA_ROOT_PATH/rollup.config.ts",
-    "build:storybook": "build-storybook --output-dir .out"
+    "build:storybook": "build-storybook --output-dir .out --docs"
   },
   "repository": {
     "type": "git",
@@ -22,11 +22,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "@fortawesome/react-fontawesome": "^0.1.8",
     "@rollup/plugin-node-resolve": "^7.1.1",
-    "@storybook/addon-a11y": "^6.0.0-alpha.13",
-    "@storybook/addon-actions": "^6.0.0-alpha.13",
-    "@storybook/addon-contexts": "^6.0.0-alpha.13",
     "@storybook/addon-docs": "^6.0.0-alpha.13",
-    "@storybook/addon-knobs": "^6.0.0-alpha.13",
     "@storybook/addons": "^6.0.0-alpha.13",
     "@storybook/react": "^6.0.0-alpha.13",
     "@storybook/theming": "^5.3.13",
@@ -46,6 +42,7 @@
     "rimraf": "^3.0.2",
     "rollup": "^1.31.1",
     "rollup-plugin-typescript2": "^0.26.0",
+    "storybook-addon-deps": "^1.0.11",
     "ts-jest": "^25.2.0",
     "ts-loader": "^6.2.1",
     "ts-node": "^8.6.2",

@@ -4,12 +4,11 @@ module.exports = {
   stories: [
     '../components/**/*.stories.tsx'
   ],
+  presets: [
+    'storybook-addon-deps/preset'
+  ],
   addons: [
-    '@storybook/addon-knobs',
-    '@storybook/addon-actions',
-    '@storybook/addon-a11y',
-    '@storybook/addon-docs',
-    '@storybook/addon-contexts'
+    '@storybook/addon-docs'
   ],
   webpackFinal: (config: Configuration) => ({
     ...config,
