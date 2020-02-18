@@ -22,7 +22,7 @@ export function useTrap<T extends HTMLElement>(ref: RefObject<T>, enabled: boole
       return [];
     }
 
-    return Array.from(ref.current.querySelectorAll<HTMLElement>(tabbableQueries.join(','))).filter((e) => e.tabIndex >= 0)
+    return Array.from(ref.current.querySelectorAll<HTMLElement>(tabbableQueries.join(','))).filter((e) => e.tabIndex >= 0);
   }
 
   function focusEdge(first: boolean) {
