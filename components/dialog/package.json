@@ -1,0 +1,30 @@
+{
+  "name": "@kroket/dialog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "module": "lib/index.es.js",
+  "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/houfio/kroket.git"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/houfio/kroket#readme",
+  "files": [
+    "index.tsx",
+    "lib/"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@kroket/container": "^1.0.0",
+    "@kroket/focus": "^1.0.0",
+    "@kroket/styled": "^1.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.10.0",
+    "react-dom": "^16.10.0"
+  }
+}
