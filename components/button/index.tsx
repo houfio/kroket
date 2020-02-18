@@ -43,6 +43,7 @@ type Props = {
 
 export const Button = forwardRef<HTMLButtonElement, Props>(({ text, onClick, icon, iconOnly = false, loading = false, disabled = false, size = 'normal', type = 'button', className }, ref) => {
   const StyledButton = useStyled('button')`
+    position: relative;
     padding: .5rem .75rem;
     color: ${'text'};
     background-color: ${'primary'};
@@ -73,6 +74,7 @@ export const Button = forwardRef<HTMLButtonElement, Props>(({ text, onClick, ico
     :focus {
       outline: none;
       box-shadow: 0 0 0 .25rem ${'focus'};
+      z-index: 1;
     }
   `;
   const StyledIcon = useStyled(FontAwesomeIcon)`
