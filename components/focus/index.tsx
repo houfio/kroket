@@ -24,10 +24,11 @@ type Props = {
   /**
    * Defines the handler called when the user attempts to escape the focus trap.
    */
-  onEscape?: () => void
+  onEscape?: () => void,
+  className?: string
 };
 
-export function Focus({ children, type, restore = false, onEscape }: Props) {
+export function Focus({ children, type, restore = false, onEscape, className }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [last, setLast] = useState<HTMLElement>();
   const container = useContainer('focus-trap');
@@ -79,7 +80,7 @@ export function Focus({ children, type, restore = false, onEscape }: Props) {
       {type === 'include' && createPortal((
         <StyledTrap onClick={() => onEscape?.()}/>
       ), container)}
-      <StyledFocus ref={ref} inert={type === 'exclude' ? '' : undefined} data-type={type}>
+      <StyledFocus ref={ref} inert={type === 'exclude' ? '' : undefined} className={className} data-type={type}>
         {children}
       </StyledFocus>
     </>

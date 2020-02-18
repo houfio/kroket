@@ -24,7 +24,6 @@ type Props = {
 
 export function Spinner({ children, spinning, mode = 'light', size = 'normal' }: Props) {
   const StyledWrapper = useStyled(Focus)`
-    position: relative;
     display: inline-block;
   `;
   const StyledSpinner = useStyled('div')`

@@ -17,7 +17,7 @@ export function useStyled<T extends ElementType>(element: T) {
 
     return useMemo(() => forwardRef<unknown, ComponentPropsWithoutRef<T>>((props, ref) => createElement(element, {
       ...props,
-      className: css(style),
+      className: `${css(style)}${props.className ? ` ${props.className}` : ''}`,
       ref
     })), [style]);
   };
