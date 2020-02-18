@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions';
 import { select } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { useState } from 'react';
@@ -12,7 +13,7 @@ export default {
 export function include() {
   return (
     <div>
-      <Focus type="include">
+      <Focus type="include" onEscape={action('escape')}>
         <button>
           include
         </button>
@@ -48,16 +49,16 @@ export function restore() {
       <button onClick={() => setActive(!active)}>
         button
       </button>
-      <div style={{ padding: '1rem', backgroundColor: 'dodgerblue' }}>
-        <Focus type={active ? type : undefined} restore={true}>
+      <Focus type={active ? type : undefined} restore={true}>
+        <div style={{ padding: '1rem', backgroundColor: 'dodgerblue' }}>
           <button onClick={() => setActive(false)}>
             {active ? type : 'button'}
           </button>
-        </Focus>
-      </div>
+        </div>
+      </Focus>
       <button onClick={() => setActive(!active)}>
         button
       </button>
     </div>
-  )
+  );
 }

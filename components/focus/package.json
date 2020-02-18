@@ -19,10 +19,14 @@
     "access": "public"
   },
   "dependencies": {
+    "@kroket/container": "^1.0.0",
+    "@kroket/key": "^1.0.0",
+    "@kroket/styled": "^1.0.0",
     "@kroket/trap": "^1.0.0",
     "inert-polyfill": "^0.2.5"
   },
   "peerDependencies": {
-    "react": "^16.10.0"
+    "react": "^16.10.0",
+    "react-dom": "^16.10.0"
   }
 }
