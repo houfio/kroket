@@ -6,7 +6,8 @@ import * as React from 'react';
 import { Button } from '.';
 
 export default {
-  title: 'Button'
+  title: 'Button',
+  component: Button
 };
 
 function knobs() {

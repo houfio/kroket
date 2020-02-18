@@ -5,10 +5,11 @@ module.exports = {
     '../components/**/*.stories.tsx'
   ],
   addons: [
-    '@storybook/addon-a11y',
+    '@storybook/addon-knobs',
     '@storybook/addon-actions',
-    '@storybook/addon-contexts',
-    '@storybook/addon-knobs'
+    '@storybook/addon-a11y',
+    '@storybook/addon-docs',
+    '@storybook/addon-contexts'
   ],
   webpackFinal: (config: Configuration) => ({
     ...config,

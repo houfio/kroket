@@ -4,7 +4,8 @@ import * as React from 'react';
 import { Spinner } from '.';
 
 export default {
-  title: 'Spinner'
+  title: 'Spinner',
+  component: Spinner
 };
 
 export function simple() {

@@ -1,5 +1,4 @@
 import { withA11y } from '@storybook/addon-a11y';
-import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
 import { addDecorator, addParameters } from '@storybook/react';
 
@@ -12,6 +11,7 @@ const redTheme: Theme = {
   text: 'white'
 };
 
+addDecorator(withKnobs);
 addDecorator(withA11y);
 addDecorator(withContexts([{
   icon: 'star',
@@ -31,8 +31,7 @@ addDecorator(withContexts([{
     cancelable: true
   }
 }]));
-addDecorator(withInfo);
-addDecorator(withKnobs);
+
 addParameters({
   a11y: {
     config: {
@@ -43,11 +42,5 @@ addParameters({
         }
       ]
     }
-  },
-  info: {
-    header: false,
-    propTablesExclude: [
-      ThemeProvider
-    ]
   }
 });

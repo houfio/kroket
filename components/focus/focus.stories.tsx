@@ -5,7 +5,8 @@ import { useState } from 'react';
 import { Focus } from '.';
 
 export default {
-  title: 'Focus'
+  title: 'Focus',
+  component: Focus
 };
 
 export function include() {
