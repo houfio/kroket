@@ -31,7 +31,7 @@ type Props = {
 export function Focus({ children, type, restore = false, onEscape, className }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [last, setLast] = useState<HTMLElement>();
-  const container = useContainer('focus-trap');
+  const container = useContainer('kroket-focus-trap');
   const [start, end] = useTrap(ref, type === 'include');
   const StyledFocus = useStyled('div')`
     position: relative;
