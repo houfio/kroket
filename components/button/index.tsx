@@ -45,11 +45,11 @@ export const Button = forwardRef<HTMLButtonElement, Props>(({ text, onClick, ico
   const StyledButton = useStyled('button')`
     position: relative;
     padding: .5rem .75rem;
-    color: ${'text'};
+    color: ${'background'};
     background-color: ${'primary'};
     font-size: 1rem;
     border: none;
-    border-radius: .5rem;
+    border-radius: ${'borderRadius'};
     user-select: none;
     cursor: pointer;
     transition: color .25s ease, transform .25s ease, opacity .25s ease, padding .25s ease, font-size .25s ease, box-shadow .25s ease;
