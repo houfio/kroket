@@ -1,7 +1,7 @@
 import { useContainer } from '@kroket/container';
 import { useKey } from '@kroket/key';
 import { useStyled } from '@kroket/styled';
-import { trap } from '@kroket/trap';
+import { useTrap } from '@kroket/trap';
 import 'inert-polyfill';
 import * as React from 'react';
 import { ReactNode, useEffect, useLayoutEffect, useRef, useState } from 'react';
@@ -32,6 +32,7 @@ export function Focus({ children, type, restore = false, onEscape, className }: 
   const ref = useRef<HTMLDivElement>(null);
   const [last, setLast] = useState<HTMLElement>();
   const container = useContainer('focus-trap');
+  const [start, end] = useTrap(ref, type === 'include');
   const StyledFocus = useStyled('div')`
     position: relative;
     [type="include"] {
@@ -49,22 +50,6 @@ export function Focus({ children, type, restore = false, onEscape, className }: 
 
   useKey('Escape', () => type === 'include' && onEscape?.(), [onEscape, type]);
 
-  useEffect(() => {
-    if (!ref.current || type !== 'include') {
-      return;
-    }
-
-    function handleKeyDown(event?: KeyboardEvent) {
-      trap(event, ref.current!);
-    }
-
-    handleKeyDown();
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [type]);
-
   useLayoutEffect(() => {
     setLast(type && document.activeElement as HTMLElement || undefined);
   }, [type, setLast]);
@@ -81,7 +66,9 @@ export function Focus({ children, type, restore = false, onEscape, className }: 
         <StyledTrap onClick={() => onEscape?.()}/>
       ), container)}
       <StyledFocus ref={ref} inert={type === 'exclude' ? '' : undefined} className={className} data-type={type}>
+        {start}
         {children}
+        {end}
       </StyledFocus>
     </>
   );

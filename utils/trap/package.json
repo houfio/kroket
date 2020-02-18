@@ -17,5 +17,8 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "react": "^16.10.2"
   }
 }

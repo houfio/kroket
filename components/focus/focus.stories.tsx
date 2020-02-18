@@ -13,7 +13,13 @@ export const include = () => (
       <button>
         include
       </button>
+      <button>
+        include
+      </button>
     </Focus>
+    <button>
+      button
+    </button>
     <button>
       button
     </button>
@@ -26,7 +32,13 @@ export const exclude = () => (
       <button>
         exclude
       </button>
+      <button>
+        exclude
+      </button>
     </Focus>
+    <button>
+      button
+    </button>
     <button>
       button
     </button>
