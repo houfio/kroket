@@ -19,6 +19,6 @@ export function useStyled<T extends ElementType>(element: T) {
       ...props,
       className: `${css(style)}${props.className ? ` ${props.className}` : ''}`,
       ref
-    })), [style]);
+    })), [element, style]);
   };
 }
