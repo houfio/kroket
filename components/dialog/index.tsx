@@ -1,5 +1,6 @@
 import { useContainer } from '@kroket/container';
 import { Focus } from '@kroket/focus';
+import { useHide } from '@kroket/hide';
 import { useLock } from '@kroket/lock';
 import { useStyled } from '@kroket/styled';
 import * as React from 'react';
@@ -16,6 +17,7 @@ type Props = {
 export function Dialog({ children, open = false, onDismiss, strict = false }: Props) {
   const [mount, setMount] = useState(open);
   const container = useContainer('kroket-dialog');
+  const [hide, unhide] = useHide();
   const [lock, unlock] = useLock();
   const StyledBackdrop = useStyled('div')`
     @keyframes fadeIn {
@@ -87,12 +89,14 @@ export function Dialog({ children, open = false, onDismiss, strict = false }: Pr
       return;
     }
 
+    hide(document.body, '#kroket-dialog');
     lock();
     setMount(true);
-  }, [open, setMount, lock]);
+  }, [open, setMount, hide, lock]);
 
   const unmount = () => {
     if (!open) {
+      unhide();
       unlock();
       setMount(false);
     }
