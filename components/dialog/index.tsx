@@ -95,7 +95,7 @@ export function Dialog({ children, open = false, onDismiss, strict = false }: Pr
   return mount ? createPortal((
     <>
       <StyledBackdrop data-open={open} onAnimationEnd={unmount}/>
-      <StyledFocus type="include" onEscape={strict ? undefined : onDismiss}>
+      <StyledFocus type={open ? 'include' : undefined} restore={true} onEscape={strict ? undefined : onDismiss}>
         <StyledDialog role="dialog" aria-modal="true" data-open={open}>
           {children}
         </StyledDialog>
