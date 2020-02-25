@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useState } from 'react';
 
+import { Button } from '../button';
+
 import { Dialog } from '.';
 
 export default {
@@ -13,14 +15,10 @@ export const dialog = () => {
 
   return (
     <>
-      <button onClick={() => setOpen(true)}>
-        open
-      </button>
+      <Button text="Open" onClick={() => setOpen(true)}/>
       <Dialog open={open} onDismiss={() => setOpen(false)}>
         Hoi!
-        <button>
-          test
-        </button>
+        <Button text="Test"/>
       </Dialog>
     </>
   );
@@ -31,14 +29,10 @@ export const strict = () => {
 
   return (
     <>
-      <button onClick={() => setOpen(true)}>
-        open
-      </button>
+      <Button text="Open" onClick={() => setOpen(true)}/>
       <Dialog open={open} strict={true}>
         Hoi!
-        <button onClick={() => setOpen(false)}>
-          test
-        </button>
+        <Button text="Close" onClick={() => setOpen(false)}/>
       </Dialog>
     </>
   );
