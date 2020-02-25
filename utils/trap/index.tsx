@@ -17,15 +17,15 @@ export function useTrap<T extends HTMLElement>(ref: RefObject<T>, enabled: boole
     }
   }, [enabled]);
 
-  function getTabbable() {
+  const getTabbable = () => {
     if (!ref.current) {
       return [];
     }
 
     return Array.from(ref.current.querySelectorAll<HTMLElement>(tabbableQueries.join(','))).filter((e) => e.tabIndex >= 0);
-  }
+  };
 
-  function focusEdge(first: boolean) {
+  const focusEdge = (first: boolean) => {
     const tabbable = getTabbable();
 
     if (!tabbable.length) {
@@ -33,7 +33,7 @@ export function useTrap<T extends HTMLElement>(ref: RefObject<T>, enabled: boole
     }
 
     tabbable[first ? 0 : tabbable.length - 1].focus();
-  }
+  };
 
   return enabled ? [(
     <div tabIndex={0} onFocus={() => focusEdge(false)} data-focus-trap=""/>

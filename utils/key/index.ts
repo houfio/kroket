@@ -4,13 +4,13 @@ export function useKey(key: string, fn: () => void, deps: DependencyList) {
   const callback = useCallback(fn, deps);
 
   useEffect(() => {
-    function handleKeyDown(event: KeyboardEvent) {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key !== key) {
         return;
       }
 
       callback();
-    }
+    };
 
     document.addEventListener('keydown', handleKeyDown);
 
