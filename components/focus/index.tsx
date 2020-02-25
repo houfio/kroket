@@ -30,6 +30,7 @@ type Props = {
 
 export function Focus({ children, type, restore = false, onEscape, className }: Props) {
   const ref = useRef<HTMLDivElement>(null);
+  const mounted = useRef(true);
   const [last, setLast] = useState<HTMLElement>();
   const container = useContainer('kroket-focus-trap');
   const [start, end] = useTrap(ref, type === 'include');
@@ -54,10 +55,20 @@ export function Focus({ children, type, restore = false, onEscape, className }: 
     setLast(type && document.activeElement as HTMLElement || undefined);
   }, [type, setLast]);
 
+  useLayoutEffect(() => () => {
+    mounted.current = false;
+  }, []);
+
   useEffect(() => {
     if (restore && !type && last) {
       last.focus();
     }
+
+    return () => {
+      if (restore && !mounted.current && last) {
+        last.focus();
+      }
+    };
   }, [restore, type, last]);
 
   return (
