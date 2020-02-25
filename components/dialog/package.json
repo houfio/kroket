@@ -21,6 +21,7 @@
   "dependencies": {
     "@kroket/container": "^1.0.0",
     "@kroket/focus": "^1.0.0",
+    "@kroket/lock": "^1.0.0",
     "@kroket/styled": "^1.0.0"
   },
   "peerDependencies": {

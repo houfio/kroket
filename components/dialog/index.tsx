@@ -1,5 +1,6 @@
 import { useContainer } from '@kroket/container';
 import { Focus } from '@kroket/focus';
+import { useLock } from '@kroket/lock';
 import { useStyled } from '@kroket/styled';
 import * as React from 'react';
 import { ReactNode, useEffect, useState } from 'react';
@@ -15,6 +16,7 @@ type Props = {
 export function Dialog({ children, open = false, onDismiss, strict = false }: Props) {
   const [mount, setMount] = useState(open);
   const container = useContainer('kroket-dialog');
+  const [lock, unlock] = useLock();
   const StyledBackdrop = useStyled('div')`
     @keyframes fadeIn {
       from {
@@ -45,7 +47,7 @@ export function Dialog({ children, open = false, onDismiss, strict = false }: Pr
     }
   `;
   const StyledFocus = useStyled(Focus)`
-    position: absolute !important;
+    position: fixed !important;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -81,21 +83,25 @@ export function Dialog({ children, open = false, onDismiss, strict = false }: Pr
   `;
 
   useEffect(() => {
-    if (open) {
-      return setMount(true);
-    }
-  }, [open, setMount]);
-
-  function unmount() {
     if (!open) {
+      return;
+    }
+
+    lock();
+    setMount(true);
+  }, [open, setMount, lock]);
+
+  const unmount = () => {
+    if (!open) {
+      unlock();
       setMount(false);
     }
-  }
+  };
 
   return mount ? createPortal((
     <>
       <StyledBackdrop data-open={open} onAnimationEnd={unmount}/>
-      <StyledFocus type={open ? 'include' : undefined} restore={true} onEscape={strict ? undefined : onDismiss}>
+      <StyledFocus type="include" restore={true} onEscape={strict ? undefined : onDismiss}>
         <StyledDialog role="dialog" aria-modal="true" data-open={open}>
           {children}
         </StyledDialog>
