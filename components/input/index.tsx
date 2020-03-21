@@ -1,7 +1,7 @@
 import { useStyled } from '@kroket/styled';
 import { unit } from '@kroket/unit';
 import * as React from 'react';
-import type { ChangeEventHandler, FocusEventHandler } from 'react';
+import { ChangeEventHandler, FocusEventHandler, forwardRef } from 'react';
 
 type Props = {
   name: string,
@@ -14,7 +14,7 @@ type Props = {
   onBlur?: FocusEventHandler<HTMLInputElement>
 };
 
-export function Input({ name, label, value, type, required, onFocus, onChange, onBlur }: Props) {
+export const Input = forwardRef<HTMLInputElement, Props>(({ name, label, value, type, required, onFocus, onChange, onBlur }, ref) => {
   const StyledWrapper = useStyled('div')`
     position: relative;
     display: flex;
@@ -90,10 +90,11 @@ export function Input({ name, label, value, type, required, onFocus, onChange, o
         {...type !== 'area' ? {
           type
         } : {}}
+        ref={ref}
       />
       <StyledLabel htmlFor={name}>
         {label}
       </StyledLabel>
     </StyledWrapper>
   );
-}
+});
