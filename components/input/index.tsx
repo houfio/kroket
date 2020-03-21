@@ -1,4 +1,5 @@
 import { useStyled } from '@kroket/styled';
+import { unit } from '@kroket/unit';
 import * as React from 'react';
 import type { ChangeEventHandler, FocusEventHandler } from 'react';
 
@@ -6,7 +7,7 @@ type Props = {
   name: string,
   title: string,
   value: string,
-  type?: 'text' | 'number' | 'password' | 'url'
+  type?: 'text' | 'number' | 'password' | 'url' | 'area'
   onChange: ChangeEventHandler<HTMLInputElement>,
   onFocus?: FocusEventHandler<HTMLInputElement>,
   onBlur?: FocusEventHandler<HTMLInputElement>
@@ -18,6 +19,28 @@ export function Input({ name, title, value, type, onFocus, onChange, onBlur }: P
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
+    [resize="true"]::after {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      width: .5rem;
+      height: .5rem;
+      bottom: .25rem;
+      right: .25rem;
+      border: 2px solid ${'foreground'};
+      border-top: none;
+      border-left: none;
+      border-bottom-right-radius: ${(theme) => {
+        const [size, ext] = unit(theme.borderRadius);
+
+        return `${size / 2}${ext}`;
+      }};
+      opacity: .5;
+      pointer-events: none;
+    }
+    :focus-within::after {
+      z-index: 1;
+    }
   `;
   const StyledLabel = useStyled('label')`
     position: absolute;
@@ -30,13 +53,15 @@ export function Input({ name, title, value, type, onFocus, onChange, onBlur }: P
     text-transform: uppercase;
     pointer-events: none;
   `;
-  const StyledInput = useStyled('input')`
+  const StyledInput = useStyled(type === 'area' ? 'textarea' : 'input')`
     padding: 1.75rem 1.25rem .75rem 1.25rem;
     background-color: ${'card'};
     border: none;
     border-radius: ${'borderRadius'};
     font-family: inherit;
     font-size: 1rem;
+    resize: vertical;
+    overflow: auto;
     transition: box-shadow .25s ease;
     :focus {
       outline: none;
@@ -46,18 +71,23 @@ export function Input({ name, title, value, type, onFocus, onChange, onBlur }: P
         z-index: 1;
       }
     }
+    ::-webkit-resizer {
+      display: none;
+    }
   `;
 
   return (
-    <StyledWrapper title={title}>
+    <StyledWrapper title={title} data-resize={type === 'area'}>
       <StyledInput
         id={name}
         name={name}
         value={value}
-        type={type}
         onChange={onChange}
         onFocus={onFocus}
         onBlur={onBlur}
+        {...type !== 'area' ? {
+          type
+        } : {}}
       />
       <StyledLabel htmlFor={name}>
         {title}
