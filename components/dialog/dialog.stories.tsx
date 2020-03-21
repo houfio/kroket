@@ -10,7 +10,7 @@ export default {
   component: Dialog
 };
 
-export const dialog = () => {
+export function dialog() {
   const [open, setOpen] = useState(false);
 
   return (
@@ -22,9 +22,9 @@ export const dialog = () => {
       </Dialog>
     </>
   );
-};
+}
 
-export const strict = () => {
+export function strict() {
   const [open, setOpen] = useState(false);
 
   return (
@@ -36,4 +36,4 @@ export const strict = () => {
       </Dialog>
     </>
   );
-};
+}

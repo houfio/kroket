@@ -7,40 +7,44 @@ export default {
   component: Focus
 };
 
-export const include = () => (
-  <div>
-    <Focus type="include">
+export function include() {
+  return (
+    <div>
+      <Focus type="include">
+        <button>
+          include
+        </button>
+        <button>
+          include
+        </button>
+      </Focus>
       <button>
-        include
+        button
       </button>
       <button>
-        include
+        button
       </button>
-    </Focus>
-    <button>
-      button
-    </button>
-    <button>
-      button
-    </button>
-  </div>
-);
+    </div>
+  );
+}
 
-export const exclude = () => (
-  <div>
-    <Focus type="exclude">
+export function exclude() {
+  return (
+    <div>
+      <Focus type="exclude">
+        <button>
+          exclude
+        </button>
+        <button>
+          exclude
+        </button>
+      </Focus>
       <button>
-        exclude
+        button
       </button>
       <button>
-        exclude
+        button
       </button>
-    </Focus>
-    <button>
-      button
-    </button>
-    <button>
-      button
-    </button>
-  </div>
-);
+    </div>
+  );
+}

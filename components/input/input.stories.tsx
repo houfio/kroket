@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 
 import { Input } from '.';
 
@@ -7,6 +8,10 @@ export default {
   component: Input
 };
 
-export const text = () => (
-  <Input name="test" title="Test" value="test" onChange={console.log}/>
-);
+export function text() {
+  const [input, setInput] = useState('');
+
+  return (
+    <Input name="test" title="Test" value={input} onChange={(e) => setInput(e.target.value)}/>
+  );
+}
