@@ -8,9 +8,21 @@ import { ReactNode, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 type Props = {
+  /**
+   * Defines the children of the focus container.
+   */
   children?: ReactNode,
+  /**
+   * Indicates if the dialog is open.
+   */
   open?: boolean,
+  /**
+   * Defines the handler called when the user dismisses the dialog.
+   */
   onDismiss?: () => void,
+  /**
+   * Indicates if the dialog can be dismissed by clicking on the backdrop or pressing Escape.
+   */
   strict?: boolean
 };
 
