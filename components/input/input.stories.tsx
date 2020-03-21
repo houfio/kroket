@@ -15,3 +15,11 @@ export function text() {
     <Input name="test" title="Test" value={input} onChange={(e) => setInput(e.target.value)}/>
   );
 }
+
+export function area() {
+  const [input, setInput] = useState('');
+
+  return (
+    <Input name="test" title="Test" value={input} type="area" onChange={(e) => setInput(e.target.value)}/>
+  );
+}
