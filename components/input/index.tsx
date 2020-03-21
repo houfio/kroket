@@ -5,15 +5,16 @@ import type { ChangeEventHandler, FocusEventHandler } from 'react';
 
 type Props = {
   name: string,
-  title: string,
+  label: string,
   value: string,
-  type?: 'text' | 'number' | 'password' | 'url' | 'area'
+  type?: 'text' | 'number' | 'password' | 'email' | 'url' | 'area',
+  required?: boolean,
   onChange: ChangeEventHandler<HTMLInputElement>,
   onFocus?: FocusEventHandler<HTMLInputElement>,
   onBlur?: FocusEventHandler<HTMLInputElement>
 };
 
-export function Input({ name, title, value, type, onFocus, onChange, onBlur }: Props) {
+export function Input({ name, label, value, type, required, onFocus, onChange, onBlur }: Props) {
   const StyledWrapper = useStyled('div')`
     position: relative;
     display: flex;
@@ -77,11 +78,12 @@ export function Input({ name, title, value, type, onFocus, onChange, onBlur }: P
   `;
 
   return (
-    <StyledWrapper title={title} data-resize={type === 'area'}>
+    <StyledWrapper title={label} data-resize={type === 'area'}>
       <StyledInput
         id={name}
         name={name}
         value={value}
+        required={required}
         onChange={onChange}
         onFocus={onFocus}
         onBlur={onBlur}
@@ -90,7 +92,7 @@ export function Input({ name, title, value, type, onFocus, onChange, onBlur }: P
         } : {}}
       />
       <StyledLabel htmlFor={name}>
-        {title}
+        {label}
       </StyledLabel>
     </StyledWrapper>
   );
