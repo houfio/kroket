@@ -4,13 +4,37 @@ import * as React from 'react';
 import { ChangeEventHandler, FocusEventHandler, forwardRef } from 'react';
 
 type Props = {
+  /**
+   * Defines the unique name of this input.
+   */
   name: string,
+  /**
+   * Defines a human-readable label describing the expected input.
+   */
   label: string,
+  /**
+   * Defines the current value.
+   */
   value: string,
+  /**
+   * Indicates the type of the expected input.
+   */
   type?: 'text' | 'number' | 'password' | 'email' | 'url' | 'area',
+  /**
+   * Indicates if the input is required.
+   */
   required?: boolean,
+  /**
+   * Defines the handler called when the input is changed.
+   */
   onChange: ChangeEventHandler<HTMLInputElement>,
+  /**
+   * Defines the handler called when the input gains focus.
+   */
   onFocus?: FocusEventHandler<HTMLInputElement>,
+  /**
+   * Defines the handler called when the input loses focus.
+   */
   onBlur?: FocusEventHandler<HTMLInputElement>
 };
 

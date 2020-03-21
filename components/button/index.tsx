@@ -7,7 +7,7 @@ import { forwardRef } from 'react';
 
 type Props = {
   /**
-   * Defines a human-readable title describing the action of the button. Also sets the aria-label property.
+   * Defines a human-readable title describing the action of the button.
    */
   text: string,
   /**
