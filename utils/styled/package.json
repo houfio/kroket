@@ -23,6 +23,6 @@
     "@kroket/theme": "^1.0.0"
   },
   "peerDependencies": {
-    "react": "^16.10.0"
+    "react": "^16.13.0"
   }
 }
