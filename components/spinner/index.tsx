@@ -46,8 +46,8 @@ export function Spinner({ children, spinning = false, mode = 'light', size = 'no
     }
     ::after {
       content: "";
-      width: .75rem;
-      height: .75rem;
+      width: 1.25rem;
+      height: 1.25rem;
       border: .25rem solid rgba(255, 255, 255, .5);
       border-left-color: white;
       border-radius: 50%;
@@ -67,12 +67,12 @@ export function Spinner({ children, spinning = false, mode = 'light', size = 'no
       border-left-color: black;
     }
     [size="small"]::after {
-      width: .5rem;
-      height: .5rem;
-    }
-    [size="big"]::after {
       width: 1rem;
       height: 1rem;
+    }
+    [size="big"]::after {
+      width: 1.5rem;
+      height: 1.5rem;
     }
   `;
 
