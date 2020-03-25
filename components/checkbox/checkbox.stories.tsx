@@ -23,9 +23,9 @@ export function radio() {
 
   return (
     <>
-      <Checkbox name="first" label="First" checked={checked === 'first'} radio={true} onChange={updateChecked}/>
-      <Checkbox name="second" label="Second" checked={checked === 'second'} radio={true} onChange={updateChecked}/>
-      <Checkbox name="third" label="Third" checked={checked === 'third'} radio={true} onChange={updateChecked}/>
+      <Checkbox name="first" label="First" checked={checked === 'first'} type="radio" onChange={updateChecked}/>
+      <Checkbox name="second" label="Second" checked={checked === 'second'} type="radio" onChange={updateChecked}/>
+      <Checkbox name="third" label="Third" checked={checked === 'third'} type="radio" onChange={updateChecked}/>
     </>
   );
 }
