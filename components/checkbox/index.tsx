@@ -95,7 +95,9 @@ export const Checkbox = forwardRef<HTMLInputElement, Props>(({ name, label, chec
         onBlur={onBlur}
         ref={ref}
       />
-      <StyledLabel htmlFor={name}>test</StyledLabel>
+      <StyledLabel htmlFor={name} data-radio={radio}>
+        {label}
+      </StyledLabel>
     </StyledWrapper>
   );
 });
