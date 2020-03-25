@@ -50,8 +50,8 @@ export const Input = forwardRef<HTMLInputElement, Props>(({ name, label, value, 
       display: inline-block;
       width: .5rem;
       height: .5rem;
-      bottom: .25rem;
-      right: .25rem;
+      bottom: .5rem;
+      right: .5rem;
       border: 2px solid ${'foreground'};
       border-top: none;
       border-left: none;
