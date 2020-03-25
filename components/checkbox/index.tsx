@@ -18,6 +18,10 @@ type Props = {
    */
   checked: boolean,
   /**
+   * Indicates if this checkbox is a radio.
+   */
+  radio?: boolean,
+  /**
    * Defines the handler called when the checkbox is changed.
    */
   onChange: ChangeEventHandler<HTMLInputElement>,
@@ -31,7 +35,7 @@ type Props = {
   onBlur?: FocusEventHandler<HTMLInputElement>
 };
 
-export const Checkbox = forwardRef<HTMLInputElement, Props>(({ name, label, checked, onChange, onFocus, onBlur }, ref) => {
+export const Checkbox = forwardRef<HTMLInputElement, Props>(({ name, label, checked, radio = false, onChange, onFocus, onBlur }, ref) => {
   const StyledWrapper = useStyled('div')`
     position: relative;
     height: 1.5rem;
@@ -68,7 +72,20 @@ export const Checkbox = forwardRef<HTMLInputElement, Props>(({ name, label, chec
       border-top: none;
       border-left: none;
       transform: rotate(45deg);
-      transition: left .25s ease;
+    }
+    [radio="true"] {
+      ::before  {
+        border-radius: 50%;
+      }
+      ::after {
+        top: .5rem;
+        left: .5rem;
+        height: .5rem;
+        background-color: ${'card'};
+        border: none;
+        border-radius: 50%;
+        transform: none;
+      }
     }
   `;
   const StyledInput = useStyled('input')`
@@ -89,7 +106,7 @@ export const Checkbox = forwardRef<HTMLInputElement, Props>(({ name, label, chec
         id={name}
         name={name}
         checked={checked}
-        type="checkbox"
+        type={radio ? 'radio' : 'checkbox'}
         onChange={onChange}
         onFocus={onFocus}
         onBlur={onBlur}
