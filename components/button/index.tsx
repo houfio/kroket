@@ -52,6 +52,7 @@ export const Button = forwardRef<HTMLButtonElement, Props>(({ text, onClick, ico
     border-radius: ${'borderRadius'};
     user-select: none;
     cursor: pointer;
+    appearance: none;
     transition: color .25s ease, transform .25s ease, opacity .25s ease, padding .25s ease, font-size .25s ease, box-shadow .25s ease;
     [loading="true"] {
       color: transparent;
