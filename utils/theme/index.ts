@@ -7,7 +7,9 @@ export type Theme = {
   foreground: string,
   backdrop: string,
   borderRadius: string,
-  card: string
+  card: string,
+  cardHover: string,
+  cardActive: string
 };
 
 const context = createContext<Theme>({
@@ -17,7 +19,9 @@ const context = createContext<Theme>({
   foreground: 'black',
   backdrop: 'rgba(0, 0, 0, .5)',
   borderRadius: '.5rem',
-  card: '#f7f7f7'
+  card: '#f7f7f7',
+  cardHover: '#f3f3f3',
+  cardActive: '#e7e7e7'
 });
 
 export const ThemeProvider = context.Provider;
