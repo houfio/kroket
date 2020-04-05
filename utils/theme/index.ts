@@ -9,19 +9,21 @@ export type Theme = {
   borderRadius: string,
   card: string,
   cardHover: string,
-  cardActive: string
+  cardActive: string,
+  error: string
 };
 
 const context = createContext<Theme>({
-  primary: 'rgb(30, 144, 255)',
-  focus: 'rgba(30, 144, 255, .5)',
+  primary: '#1e90ff',
+  focus: '#8ec7ff',
   background: 'white',
   foreground: 'black',
   backdrop: 'rgba(0, 0, 0, .5)',
   borderRadius: '.5rem',
   card: '#f7f7f7',
   cardHover: '#ebebeb',
-  cardActive: '#e1e1e1'
+  cardActive: '#e1e1e1',
+  error: '#ff7980'
 });
 
 export const ThemeProvider = context.Provider;
