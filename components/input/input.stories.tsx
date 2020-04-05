@@ -24,6 +24,14 @@ export function area() {
   );
 }
 
+export function required() {
+  const [input, setInput] = useState('');
+
+  return (
+    <Input name="test" label="Test" value={input} required={true} onChange={(e) => setInput(e.target.value)}/>
+  );
+}
+
 export function number() {
   const [input, setInput] = useState('');
 

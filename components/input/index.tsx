@@ -109,7 +109,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(({ name, label, value, 
   `;
 
   return (
-    <StyledWrapper title={label} data-resize={type === 'area'}>
+    <StyledWrapper title={`${label}${required ? ' (required)' : ''}`} data-resize={type === 'area'}>
       <StyledInput
         id={name}
         name={name}
@@ -124,7 +124,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(({ name, label, value, 
         data-big={type === 'area'}
         ref={ref}
       />
-      <StyledLabel htmlFor={name}>
+      <StyledLabel htmlFor={name} data-required={required}>
         {label}
       </StyledLabel>
     </StyledWrapper>
