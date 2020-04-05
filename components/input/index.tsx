@@ -77,9 +77,12 @@ export const Input = forwardRef<HTMLInputElement, Props>(({ name, label, value, 
     font-weight: bold;
     text-transform: uppercase;
     pointer-events: none;
+    [required="true"]::after {
+      content: " *";
+    }
   `;
   const StyledInput = useStyled(type === 'area' ? 'textarea' : 'input')`
-    padding: 1.75rem 1.25rem .75rem 1.25rem;
+    padding: 1.25rem 1.25rem .25rem 1.25rem;
     background-color: ${'card'};
     border: none;
     border-radius: ${'borderRadius'};
@@ -95,6 +98,10 @@ export const Input = forwardRef<HTMLInputElement, Props>(({ name, label, value, 
       ~ label {
         z-index: 1;
       }
+    }
+    [big="true"] {
+      padding-top: 1.75rem;
+      padding-bottom: .6rem;
     }
     ::-webkit-resizer {
       display: none;
@@ -114,6 +121,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(({ name, label, value, 
         {...type !== 'area' ? {
           type
         } : {}}
+        data-big={type === 'area'}
         ref={ref}
       />
       <StyledLabel htmlFor={name}>
