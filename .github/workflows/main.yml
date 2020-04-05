@@ -1,24 +1,19 @@
 name: CI
 on: [push]
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [8.x, 10.x, 12.x]
     steps:
     - uses: actions/checkout@v2.0.0
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1.2.0
+    - uses: actions/setup-node@v1.2.0
       with:
-        node-version: ${{ matrix.node-version }}
-    - name: npm install, lint, test and build
+        node-version: '12.x'
+    - name: npm install, lint and test
       run: |
         npm ci
         npm run bootstrap
         npm run lint
         npm test
-        npm run build
       env:
         CI: true
   deploy:
