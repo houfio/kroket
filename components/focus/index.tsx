@@ -13,7 +13,7 @@ type Props = {
    */
   children?: ReactNode,
   /**
-   * Indicates the typo of the focus container. When set to 'include', the container acts as a focus trap for its
+   * Indicates the type of the focus container. When set to 'include', the container acts as a focus trap for its
    * children. When set to 'exclude', it acts as a focus trap for its parents instead.
    */
   type?: 'include' | 'exclude',
