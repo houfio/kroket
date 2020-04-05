@@ -56,6 +56,9 @@
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
+    "collectCoverageFrom": [
+      "utils/**/*.{js,jsx,ts,tsx}"
+    ],
     "testRegex": "\\.tests\\.tsx?$",
     "moduleFileExtensions": [
       "js",

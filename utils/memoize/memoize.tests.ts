@@ -1,7 +1,7 @@
 import { memoize } from '.';
 
-let parse: (value: string) => number;;
-let memoizedParse: (value: string, remember?: boolean) => number;;
+let parse: (value: string) => number;
+let memoizedParse: (value: string, remember?: boolean) => number;
 
 beforeEach(() => {
   parse = jest.fn().mockImplementation((value: string) => parseInt(value, 10));
