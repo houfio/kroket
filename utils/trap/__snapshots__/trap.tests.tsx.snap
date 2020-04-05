@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return fragments when disabled 1`] = `<React.Fragment />`;
+
+exports[`should return fragments when disabled 2`] = `<React.Fragment />`;
+
+exports[`should return markers when enabled 1`] = `
+<div
+  data-focus-trap=""
+  onFocus={[Function]}
+  tabIndex={0}
+/>
+`;
+
+exports[`should return markers when enabled 2`] = `
+<div
+  data-focus-trap=""
+  onFocus={[Function]}
+  tabIndex={0}
+/>
+`;

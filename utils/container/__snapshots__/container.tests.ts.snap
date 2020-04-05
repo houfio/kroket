@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should create a container if it doesn't exist 1`] = `
+<body>
+  <div
+    id="test"
+  />
+</body>
+`;
+
+exports[`should create a container if it doesn't exist 2`] = `
+<div
+  id="test"
+/>
+`;
+
+exports[`should return the container if it exists 1`] = `
+<body>
+  
+    
+  <div
+    id="test"
+  />
+  
+  
+</body>
+`;
+
+exports[`should return the container if it exists 2`] = `
+<div
+  id="test"
+/>
+`;

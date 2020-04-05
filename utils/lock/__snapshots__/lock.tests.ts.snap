@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should hide overflow on body 1`] = `
+<body
+  style="overflow: hidden;"
+/>
+`;
+
+exports[`should preserve padding 1`] = `
+<body
+  style="overflow: hidden;"
+>
+  
+    
+  <main />
+  
+    
+  <div
+    data-kroket-fixed=""
+    style="padding-right: 1025px;"
+  />
+  
+  
+</body>
+`;
+
+exports[`should restore fixed padding 1`] = `
+<body
+  style="overflow: auto;"
+>
+  
+    
+  <main />
+  
+    
+  <div
+    data-kroket-fixed=""
+    style="padding-right: 1px;"
+  />
+  
+  
+</body>
+`;
+
+exports[`shouldn't lock when there are locked children 1`] = `
+<body
+  style="overflow: hidden;"
+>
+  
+    
+  <main />
+  
+    
+  <div
+    data-kroket-fixed=""
+    style="padding-right: 1025px;"
+  />
+  
+  
+</body>
+`;

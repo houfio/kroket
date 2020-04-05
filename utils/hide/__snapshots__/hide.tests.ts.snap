@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should hide all children 1`] = `
+<body>
+  
+    
+  <main
+    aria-hidden="true"
+  >
+    
+      
+    <button>
+      
+        test
+      
+    </button>
+    
+    
+  </main>
+  
+    
+  <div
+    aria-hidden="true"
+  >
+    
+      test
+    
+  </div>
+  
+  
+</body>
+`;
+
+exports[`should hide all children except the excluded 1`] = `
+<body>
+  
+    
+  <main
+    aria-hidden="true"
+  >
+    
+      
+    <button>
+      
+        test
+      
+    </button>
+    
+    
+  </main>
+  
+    
+  <div>
+    
+      test
+    
+  </div>
+  
+  
+</body>
+`;
+
+exports[`should unhide all hidden children 1`] = `
+<body>
+  
+    
+  <main>
+    
+      
+    <button>
+      
+        test
+      
+    </button>
+    
+    
+  </main>
+  
+    
+  <div>
+    
+      test
+    
+  </div>
+  
+  
+</body>
+`;
+
+exports[`shouldn't hide when there are hidden children 1`] = `
+<body>
+  
+    
+  <main
+    aria-hidden="true"
+  >
+    
+      
+    <button>
+      
+        test
+      
+    </button>
+    
+    
+  </main>
+  
+    
+  <div
+    aria-hidden="true"
+  >
+    
+      test
+    
+  </div>
+  
+  
+</body>
+`;

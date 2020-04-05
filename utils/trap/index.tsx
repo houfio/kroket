@@ -29,6 +29,12 @@ export function useTrap<T extends HTMLElement>(ref: RefObject<T>, enabled: boole
     const tabbable = getTabbable();
 
     if (!tabbable.length) {
+      if (ref.current) {
+        const marker = ref.current.querySelector<HTMLDivElement>('[data-focus-trap]');
+
+        marker?.focus();
+      }
+
       return;
     }
 
