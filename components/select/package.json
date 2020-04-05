@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@kroket/focus": "^1.0.0",
+    "@kroket/key": "^1.0.0",
     "@kroket/styled": "^1.0.0"
   },
   "peerDependencies": {

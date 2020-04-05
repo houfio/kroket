@@ -1,7 +1,8 @@
 import { Focus } from '@kroket/focus';
+import { useKey } from '@kroket/key';
 import { useStyled } from '@kroket/styled';
 import * as React from 'react';
-import { useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 type Props = {
   /**
@@ -24,6 +25,7 @@ type Props = {
 };
 
 export function Select({ name, label, value, options, setValue }: Props) {
+  const ref = useRef<HTMLButtonElement>();
   const [open, setOpen] = useState(false);
   const StyledWrapper = useStyled('div')`
     position: relative;
@@ -68,7 +70,7 @@ export function Select({ name, label, value, options, setValue }: Props) {
     z-index: 10;
   `;
   const StyledItem = useStyled('button')`
-    padding: .5rem .75rem;
+    padding: .5rem 1.25rem;
     background-color: ${'card'};
     border: none;
     font-family: inherit;
@@ -93,11 +95,41 @@ export function Select({ name, label, value, options, setValue }: Props) {
       border-bottom-right-radius: ${'borderRadius'};
     }
   `;
+  const changeValue = useCallback((offset: number) => {
+    if (!ref.current || !ref.current.matches(':focus')) {
+      return;
+    }
+
+    const index = options.findIndex(({ value: v }) => value === v);
+
+    if (index === -1) {
+      return;
+    }
+
+    let target = index + offset;
+
+    if (target < 0) {
+      target = options.length - 1;
+    } else if (target > options.length - 1) {
+      target = 0;
+    }
+
+    setValue(options[target].value);
+  }, [ref, value, options, setValue]);
+
+  useKey('ArrowUp', () => changeValue(-1), [changeValue]);
+  useKey('ArrowDown', () => changeValue(1), [changeValue]);
 
   return (
     <StyledWrapper title={label}>
       <input type="hidden" value={value}/>
-      <StyledToggle onClick={() => setOpen(!open)} aria-haspopup="true" aria-expanded={open} aria-labelledby={name}>
+      <StyledToggle
+        ref={ref}
+        onClick={() => setOpen(!open)}
+        aria-haspopup="true"
+        aria-expanded={open}
+        aria-labelledby={name}
+      >
         <StyledLabel id={name}>
           {label}
         </StyledLabel>
