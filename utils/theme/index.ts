@@ -20,8 +20,8 @@ const context = createContext<Theme>({
   backdrop: 'rgba(0, 0, 0, .5)',
   borderRadius: '.5rem',
   card: '#f7f7f7',
-  cardHover: '#f3f3f3',
-  cardActive: '#e7e7e7'
+  cardHover: '#ebebeb',
+  cardActive: '#e1e1e1'
 });
 
 export const ThemeProvider = context.Provider;

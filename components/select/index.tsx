@@ -77,16 +77,12 @@ export function Select({ name, label, value, options, setValue }: Props) {
     text-align: start;
     appearance: none;
     transition: box-shadow .25s ease, background-color .25s ease;
-    :hover {
+    :hover, :focus {
+      outline: none;
       background-color: ${'cardHover'};
     }
     :active, [active="true"] {
       background-color: ${'cardActive'};
-    }
-    :focus {
-      outline: none;
-      box-shadow: 0 0 0 .25rem ${'focus'};
-      z-index: 1;
     }
     :first-child {
       border-top-left-radius: ${'borderRadius'};
