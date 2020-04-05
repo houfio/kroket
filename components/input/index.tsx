@@ -25,6 +25,10 @@ type Props = {
    */
   required?: boolean,
   /**
+   * Defines the current validation error.
+   */
+  error?: string,
+  /**
    * Defines the handler called when the input is changed.
    */
   onChange: ChangeEventHandler<HTMLInputElement>,
@@ -38,7 +42,7 @@ type Props = {
   onBlur?: FocusEventHandler<HTMLInputElement>
 };
 
-export const Input = forwardRef<HTMLInputElement, Props>(({ name, label, value, type, required, onFocus, onChange, onBlur }, ref) => {
+export const Input = forwardRef<HTMLInputElement, Props>(({ name, label, value, type, required, error, onFocus, onChange, onBlur }, ref) => {
   const StyledWrapper = useStyled('div')`
     position: relative;
     display: flex;
@@ -91,6 +95,13 @@ export const Input = forwardRef<HTMLInputElement, Props>(({ name, label, value, 
     resize: vertical;
     overflow: auto;
     transition: box-shadow .25s ease;
+    [invalid="true"] {
+      box-shadow: 0 0 0 .25rem ${'error'};
+    }
+    [big="true"] {
+      padding-top: 1.75rem;
+      padding-bottom: .6rem;
+    }
     :focus {
       outline: none;
       box-shadow: 0 0 0 .25rem ${'focus'};
@@ -99,13 +110,18 @@ export const Input = forwardRef<HTMLInputElement, Props>(({ name, label, value, 
         z-index: 1;
       }
     }
-    [big="true"] {
-      padding-top: 1.75rem;
-      padding-bottom: .6rem;
-    }
     ::-webkit-resizer {
       display: none;
     }
+  `;
+  const StyledError = useStyled('div')`
+    padding: .5rem 1.25rem .25rem;
+    color: ${'background'};
+    background-color: ${'error'};
+    border-bottom-left-radius: ${'borderRadius'};
+    border-bottom-right-radius: ${'borderRadius'};
+    box-shadow: 0 0 0 .25rem ${'error'};
+    z-index: -1;
   `;
 
   return (
@@ -118,15 +134,25 @@ export const Input = forwardRef<HTMLInputElement, Props>(({ name, label, value, 
         onChange={onChange}
         onFocus={onFocus}
         onBlur={onBlur}
-        {...type !== 'area' ? {
+        {...type !== 'area' && {
           type
-        } : {}}
+        }}
+        {...error && {
+          'aria-invalid': Boolean(error),
+          'aria-describedby': `${name}_error`
+        }}
+        data-invalid={Boolean(error)}
         data-big={type === 'area'}
         ref={ref}
       />
       <StyledLabel htmlFor={name} data-required={required}>
         {label}
       </StyledLabel>
+      {error && (
+        <StyledError id={`${name}_error`}>
+          {error}
+        </StyledError>
+      )}
     </StyledWrapper>
   );
 });

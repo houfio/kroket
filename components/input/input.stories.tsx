@@ -39,3 +39,11 @@ export function number() {
     <Input name="test" label="Test" value={input} type="number" onChange={(e) => setInput(e.target.value)}/>
   );
 }
+
+export function error() {
+  const [input, setInput] = useState('');
+
+  return (
+    <Input name="test" label="Test" value={input} error="Invalid input" onChange={(e) => setInput(e.target.value)}/>
+  );
+}
