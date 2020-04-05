@@ -32,7 +32,7 @@ export function Select({ name, label, value, options, setValue }: Props) {
     margin-bottom: 1rem;
   `;
   const StyledToggle = useStyled('button')`
-    padding: 2.25rem 1.25rem 1.25rem 1.25rem;
+    padding: 1.75rem 1.25rem .6rem 1.25rem;
     background-color: ${'card'};
     border: none;
     border-radius: ${'borderRadius'};
